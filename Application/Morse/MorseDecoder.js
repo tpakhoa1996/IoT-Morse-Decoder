@@ -21,6 +21,8 @@ class MorseDecoder {
 			morseCode = "";
 			if ( decodedLetter != null ) {
 				return decodedLetter + " ";
+			} else {
+				return null;
 			}
 		} else {
 			this.morseCode += morseSignal;
