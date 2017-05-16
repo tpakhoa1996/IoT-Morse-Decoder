@@ -6,23 +6,30 @@ let Express = require("express"),
 let	app = Express(),
 	server = Http.createServer(app),
 	logger = new Winston.Logger(),
-	signalController = require("./Signal/SignalController.js");
+	signalController = require("./Signal/SignalController.js"),
+	morseController = require("./Morse/MorseController.js");
+
+// Configure middleware of an express app
+app.use("/", Express.static("public"));
 
 // Configure logger
 logger.configure({
 	transports: [ new (Winston.transports.Console)() ]
 });
 
-signalController.on("data", (data) => {
-	logger.log("info", "A morse signal received: ", data);
+// Process data from motion sensor
+signalController.on("data", (morseSignal) => {
+	logger.log("info", "A morse signal received: ", morseSignal);
+	morseController.addMorseSignal(morseSignal);
 });
 
 
-// routes
+// Routes
 app.get("/", (req, res) => {
 	logger.log("info", ("A request from" + req.ip + " to " + req.originalUrl));
-	res.sendFile("index.html", { root: __dirname });
+	res.sendFile("/view/main.html", {root: __dirname});
 });
 
+// Run server
 server.listen(8080);
 

@@ -8,5 +8,8 @@ exports.module = {
 	"dotSym": ".",
 	"dashSym": "-",
 	"letterGapSym": "&",
-	"wordGapSym": "_"
+	"wordGapSym": "_",
+	"table": {
+		".-": "A"
+	}
 }
