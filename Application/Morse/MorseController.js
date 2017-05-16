@@ -28,7 +28,7 @@ exports.addMorseSignal = (morseSignal) => {
 	morseDecoder.setSignal(morseSignal);
 	c = morseDecoder.decode();	
 	if (c != null){
-		database.upload(c);	
+		database.uploadMessage(c);	
 	}		
 	
 }
