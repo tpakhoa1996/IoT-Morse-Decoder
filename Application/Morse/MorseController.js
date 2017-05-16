@@ -24,9 +24,7 @@ exports.addMorseSignal = (morseSignal) => {
 	// Use morseDecoder to process the morseSignal
 	// If a letter is decoded then it will be sent to database
 	// log out the process
-	let c;
-	morseDecoder.setSignal(morseSignal);
-	c = morseDecoder.decode();	
+	let c = morseDecoder.addSignal(morseSignal);
 	if (c != null){
 		logger.log("info","A character has been decoded", c);
 		database.uploadMessage(c);	

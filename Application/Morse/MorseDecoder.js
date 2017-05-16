@@ -8,21 +8,23 @@ let morse = require.main.require("./config.morse.js");
 class MorseDecoder {
 	constructor() {
 		this.morseCode = "";
+		this.currentSignal = '';
 	}
 
-	setSignal(morseSignal) {
-		this.morseCode = morseSignal;	
-	}
-	
-	decode() {
-		if (this.morseCode == "") {
-			//if the received morse code is empty
-			console.log("Morse signal not received!");
-			return null;
+	addSignal(morseSignal) {
+		if (morseSignal == morse.letterGapSym) {
+			let decodedLetter = morse.table[morseCode];
+			morseCode = "";
+			return decodedLetter;
+		} else if (morseSignal == morse.wordGapSym) {
+			let decodedLetter = morse.table[morseCode];
+			morseCode = "";
+			if ( decodedLetter != null ) {
+				return decodedLetter + " ";
+			}
 		} else {
-			//return the character according the the morse table in config.morse.js
-			return morse.table[this.morseCode];
-		}
+			this.morseCode += morseSignal;
+		}	
 	}
 }
 
