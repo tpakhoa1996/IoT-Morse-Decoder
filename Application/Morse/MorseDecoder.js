@@ -21,7 +21,7 @@ class MorseDecoder {
 			return null;
 		} else {
 			//return the character according the the morse table in config.morse.js
-			return morse.table[morseSignal];
+			return morse.table[this.morseCode];
 		}
 	}
 }

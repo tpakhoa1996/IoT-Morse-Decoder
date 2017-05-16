@@ -19,7 +19,7 @@ class MorseSignalHandler {
 			if (len > morse.dash)
 				return morse.dashSym;
 			else if (len > morse.dot)
-				return more.dotSym;
+				return morse.dotSym;
 		} else if (this.currentType == "gap") {
 			if (len > morse.wordGap)
 				return morse.wordGapSym;

@@ -1,6 +1,6 @@
 const timeUnit = 1000; // 1000 ms
 
-exports.module = {
+module.exports = {
 	"dot": timeUnit,
 	"dash": 3 * timeUnit,
 	"letterGap": 3 * timeUnit,
