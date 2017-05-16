@@ -28,6 +28,7 @@ exports.addMorseSignal = (morseSignal) => {
 	morseDecoder.setSignal(morseSignal);
 	c = morseDecoder.decode();	
 	if (c != null){
+		logger.log("info","A character has been decoded", c);
 		database.uploadMessage(c);	
 	}		
 	
