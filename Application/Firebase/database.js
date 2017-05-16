@@ -7,18 +7,25 @@ firebaseAdmin.initializeApp({
 });
 
 let db = firebaseAdmin.database();
-	messageRef = db.ref("/Message");
+	messageRef = db.ref("/Message"),
+	motionDataRef = db.ref("/MotionData");
 
+// Clear data when turnning on
 messageRef.remove();
+motionDataRef.remove();
 
-exports.db = db;
-
-exports.upload = (data) => {
+// Function to communicate with Application
+exports.uploadMessage = (data) => {
 	let pushKey = messageRef.push().key;
 	let upData = {
 		letter: data,
 		date: new Date
 	};
 	messageRef.child(pushKey).update(upData);
+};
+
+exports.uploadMotionData = (data) => {
+	let pushKey = motionDataRef.push().key;
+	motionDataRef.child(pushKey).update(data);
 };
 
