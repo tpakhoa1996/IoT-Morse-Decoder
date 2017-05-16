@@ -8,17 +8,18 @@ let morse = require.main.require("./config.morse.js");
 class MorseDecoder {
 	constructor() {
 		this.morseCode = "";
-		this.currentSignal = '';
 	}
 
 	addSignal(morseSignal) {
+		console.log("Morse Signal: " + morseSignal);
+		console.log("Morse code: " + this.morseCode);
 		if (morseSignal == morse.letterGapSym) {
-			let decodedLetter = morse.table[morseCode];
-			morseCode = "";
+			let decodedLetter = morse.table[this.morseCode];
+			this.morseCode = "";
 			return decodedLetter;
 		} else if (morseSignal == morse.wordGapSym) {
-			let decodedLetter = morse.table[morseCode];
-			morseCode = "";
+			let decodedLetter = morse.table[this.morseCode];
+			this.morseCode = "";
 			if ( decodedLetter != null ) {
 				return decodedLetter + " ";
 			} else {

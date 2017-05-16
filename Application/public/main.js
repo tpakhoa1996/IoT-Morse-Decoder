@@ -9,11 +9,13 @@ $(document).ready( function() {
 	motionDataRef.on("child_added", function(snap) {
 		var data = snap.val();
 		data.date = new Date(data.date);
-		motionSensorData.append($("<p>", {
+		motionSensorData.prepend($("<p>", {
 			text: "At " + data.date.toLocaleString() + ", there is an event: " + data.motion
 		}));
 	});
 
-	message.on("child_added", function(snap) {
+	messageRef.on("child_added", function(snap) {
+		var data = snap.val();
+		message.text( message.text() + data.string);
 	});
 });

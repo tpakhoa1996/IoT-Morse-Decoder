@@ -14,6 +14,9 @@ class MorseSignalHandler {
 	}
 
 	getMorseSignal() {
+		console.log(this.prevSignal);
+		if (this.prevSignal == null)
+			return null;
 		let len = this.currentSignal - this.prevSignal;
 		if (this.currentType == "mark") {
 			if (len > morse.dash)

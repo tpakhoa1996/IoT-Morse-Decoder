@@ -18,7 +18,7 @@ motionDataRef.remove();
 exports.uploadMessage = (data) => {
 	let pushKey = messageRef.push().key;
 	let upData = {
-		letter: data,
+		string: data,
 		date: new Date
 	};
 	messageRef.child(pushKey).update(upData);

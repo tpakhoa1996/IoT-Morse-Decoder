@@ -18,9 +18,9 @@ logger.configure({
 });
 
 // Process data from motion sensor
-signalController.on("data", (morseSignal) => {
-	logger.log("info", "A morse signal received: ", morseSignal);
-	morseController.addMorseSignal(morseSignal);
+signalController.on("data", (morseData) => {
+	logger.log("info", "A morse signal received: ", morseData.signal);
+	morseController.addMorseSignal(morseData.signal);
 });
 
 

@@ -25,6 +25,7 @@ exports.addMorseSignal = (morseSignal) => {
 	// If a letter is decoded then it will be sent to database
 	// log out the process
 	let c = morseDecoder.addSignal(morseSignal);
+	console.log("Decoded mess: " + c);
 	if (c != null){
 		logger.log("info","A character has been decoded", c);
 		database.uploadMessage(c);	
