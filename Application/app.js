@@ -27,9 +27,8 @@ signalController.on("data", (morseSignal) => {
 // Routes
 app.get("/", (req, res) => {
 	logger.log("info", ("A request from" + req.ip + " to " + req.originalUrl));
-	res.sendFile("/view/main.html", {root: __dirname});
+	res.sendFile("/views/main.html", {root: __dirname});
 });
 
 // Run server
 server.listen(8080);
-

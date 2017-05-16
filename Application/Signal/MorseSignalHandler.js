@@ -15,12 +15,12 @@ class MorseSignalHandler {
 
 	getMorseSignal() {
 		let len = this.currentSignal - this.prevSignal;
-		if (signalType == "mark") {
+		if (this.currentType == "mark") {
 			if (len > morse.dash)
 				return morse.dashSym;
 			else if (len > morse.dot)
 				return more.dotSym;
-		} else if (signalType == "gap") {
+		} else if (this.currentType == "gap") {
 			if (len > morse.wordGap)
 				return morse.wordGapSym;
 			else if (len > morse.letterGap)

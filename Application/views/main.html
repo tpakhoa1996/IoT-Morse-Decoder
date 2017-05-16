@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Morse Intepreter </title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyCEosAaQFKkE0nFSYXrW7VbJxzl-1YYsA8",
+		    authDomain: "morsedecoder-b6db6.firebaseapp.com",
+		    databaseURL: "https://morsedecoder-b6db6.firebaseio.com",
+		    projectId: "morsedecoder-b6db6",
+		    storageBucket: "morsedecoder-b6db6.appspot.com",
+		    messagingSenderId: "600973921508"
+		  };
+		  firebase.initializeApp(config);
+		</script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"> </script>
+		<script src="/main.js"> </script>
+	</head>
+
+	<body>
+		<h3> Data from motion sensor: </h3>
+		<div id="motion-sensor-data">
+		</div>
+		<h3> Message: </h3>
+		<p id="message"> </p>
+	</body>
+</html>

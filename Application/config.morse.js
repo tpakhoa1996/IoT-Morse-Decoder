@@ -1,4 +1,4 @@
-const timeUnit = 1000;
+const timeUnit = 1000; // 1000 ms
 
 exports.module = {
 	"dot": timeUnit,

@@ -6,11 +6,16 @@ let five = require("johnny-five"),
 let board = new five.Board,
 	signalEmitter = new Events(),
 	logger = new Winston.Logger(),
-	signalHandler = new SignalHandler();
+	signalHandler = new SignalHandler(),
+	database = require.main.require("./Firebase/database.js");
 
 // Configure logger
 logger.configure({
 	transports: [
+		new (Winston.transports.Console)({
+			name: "signal-console",
+			level: "info"
+		}),
 		new (Winston.transports.File)({
 			name: "signal-file",
 			filename: "signal-info.log",
@@ -38,15 +43,31 @@ board.on("ready", () => {
 		currentSignal = null;
 	motion.on("calibrated", () => {
 		logger.log("info", "Sensor calibrated at", new Date().toLocaleString());
+
+		database.uploadMotionData({
+			date: new Date(),
+			motion: "Motion sensor calibratetd"
+		});
 	});
 
 	motion.on("motionstart", () => {
 		logger.log("info", "A motion started at", new Date().toLocaleString());
+
+		database.uploadMotionData({
+			date: new Date(),
+			motion: "Motion started"
+		});
+
 		processNewSignal("gap");
 	});
 
 	motion.on("motionend", () => {
 		logger.log("info", "A motion ended at", new Date().toLocaleString());
+
+		database.uploadMotionData({
+			date: new Date(),
+			motion: "Motion ended"
+		});
 		processNewSignal("mark");
 	});
 });
