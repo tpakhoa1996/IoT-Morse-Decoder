@@ -1,12 +1,12 @@
 let five = require("johnny-five"),
 	Events = require("events"),
 	Winston = require("winston"),
-	SignalHandler = require("./MorseSignalHandler.js");
+	MotionTranslator = require("./MotionTranslator.js");
 
-let board = new five.Board,
+let board = new five.Board(),
 	signalEmitter = new Events(),
 	logger = new Winston.Logger(),
-	signalHandler = new SignalHandler(),
+	motionTranslator = new MotionTranslator(),
 	database = require.main.require("./Firebase/database.js");
 
 // Configure logger
@@ -30,45 +30,50 @@ logger.configure({
 });
 
 // Control input from PIR motion sensor
-let processNewSignal = (signalType) => {
-	signalHandler.newSignal(signalType);
-	let morseSignal = signalHandler.getMorseSignal();
+let processNewSignal = (signal) => {
+	motionTranslator.newSignal(signal);
+	let morseSignal = motionTranslator.getMorseSignal();
 	if (morseSignal)
 		signalEmitter.emit("data", {"signal": morseSignal});
 };
 
 board.on("ready", () => {
-	let motion = new five.Motion(7),
-		prevSignal = null,
-		currentSignal = null;
+	let motion = new five.Motion(7);
+
 	motion.on("calibrated", () => {
 		logger.log("info", "Sensor calibrated at", new Date().toLocaleString());
 
-		database.uploadMotionData({
+		let signal = {
 			date: new Date(),
-			motion: "Motion sensor calibratetd"
-		});
+			motion: "calibrated"
+		};
+
+		database.uploadMotionData(signal);
 	});
 
 	motion.on("motionstart", () => {
 		logger.log("info", "A motion started at", new Date().toLocaleString());
 
-		database.uploadMotionData({
+		let signal = {
 			date: new Date(),
-			motion: "Motion started"
-		});
+			motion: "motionstart"
+		};
 
-		processNewSignal("gap");
+		database.uploadMotionData(signal);
+
+		processNewSignal(signal);
 	});
 
 	motion.on("motionend", () => {
 		logger.log("info", "A motion ended at", new Date().toLocaleString());
 
-		database.uploadMotionData({
+		let signal = {
 			date: new Date(),
-			motion: "Motion ended"
-		});
-		processNewSignal("mark");
+			motion: "motionend"
+		};
+
+		database.uploadMotionData(signal);
+		processNewSignal(signal);
 	});
 });
 

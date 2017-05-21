@@ -21,14 +21,12 @@ logger.configure({
 });
 
 exports.addMorseSignal = (morseSignal) => {
-	// Use morseDecoder to process the morseSignal
-	// If a letter is decoded then it will be sent to database
-	// log out the process
-	let c = morseDecoder.addSignal(morseSignal);
-	console.log("Decoded mess: " + c);
-	if (c != null){
-		logger.log("info","A character has been decoded", c);
-		database.uploadMessage(c);	
+	logger.log("info", "A morse signal received: ", morseSignal);
+	let decodedString = morseDecoder.addSignal(morseSignal);
+
+	if (decodedString != null){
+		logger.log("info","A string has been decoded", decodedString);
+		database.uploadMessage(decodedString);	
 	}		
 	
 }

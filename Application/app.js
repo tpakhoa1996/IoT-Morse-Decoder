@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 let Express = require("express"),
 	Http = require("http"),
 	Winston = require("winston");
@@ -17,13 +20,6 @@ logger.configure({
 	transports: [ new (Winston.transports.Console)() ]
 });
 
-// Process data from motion sensor
-signalController.on("data", (morseData) => {
-	logger.log("info", "A morse signal received: ", morseData.signal);
-	morseController.addMorseSignal(morseData.signal);
-});
-
-
 // Routes
 app.get("/", (req, res) => {
 	logger.log("info", ("A request from" + req.ip + " to " + req.originalUrl));
@@ -32,3 +28,12 @@ app.get("/", (req, res) => {
 
 // Run server
 server.listen(8080);
+logger.log("info", "Server is listening at port 8080");
+
+// Process data from motion sensor
+signalController.on("data", (morseData) => {
+	logger.log("info", ("A morse data is received: " + JSON.stringify(morseData)));
+	morseController.addMorseSignal(morseData.signal);
+});
+
+

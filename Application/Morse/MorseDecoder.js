@@ -1,5 +1,5 @@
 /*
-*MorseDecoder decodes the morse signal into a character
+*MorseDecoder decodes the morse signal into a string 
 **
 *@author: Thanh Doan
 */
@@ -11,8 +11,6 @@ class MorseDecoder {
 	}
 
 	addSignal(morseSignal) {
-		console.log("Morse Signal: " + morseSignal);
-		console.log("Morse code: " + this.morseCode);
 		if (morseSignal == morse.letterGapSym) {
 			let decodedLetter = morse.table[this.morseCode];
 			this.morseCode = "";

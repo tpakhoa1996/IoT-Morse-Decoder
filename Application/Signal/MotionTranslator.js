@@ -1,20 +1,24 @@
 let morse = require.main.require("./config.morse.js");
 
-class MorseSignalHandler {
+let motionSignal = {
+	motionstart: "gap",
+	motionend: "mark"
+};
+
+class MotionTranslator {
 	constructor() {
 		this.prevSignal = null;
 		this.currentSignal = null;
 		this.currentType = null;
 	}
 
-	newSignal(signalType) {
+	newSignal(signal) {
 		this.prevSignal = this.currentSignal;
-		this.currentSignal = new Date();
-		this.currentType = signalType;
+		this.currentSignal = signal.date;
+		this.currentType = motionSignal[signal.motion];
 	}
 
 	getMorseSignal() {
-		console.log(this.prevSignal);
 		if (this.prevSignal == null)
 			return null;
 		let len = this.currentSignal - this.prevSignal;
@@ -33,4 +37,4 @@ class MorseSignalHandler {
 	}
 }
 
-module.exports = MorseSignalHandler;
+module.exports = MotionTranslator;

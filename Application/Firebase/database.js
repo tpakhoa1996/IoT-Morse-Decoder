@@ -1,5 +1,5 @@
 let firebaseAdmin = require("firebase-admin"),
-	serviceAccount = require("./serviceAccountKey.json");
+serviceAccount = require("./serviceAccountKey.json");
 
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount),
@@ -13,19 +13,20 @@ let db = firebaseAdmin.database();
 // Clear data when turnning on
 messageRef.remove();
 motionDataRef.remove();
-
+	
 // Function to communicate with Application
-exports.uploadMessage = (data) => {
-	let pushKey = messageRef.push().key;
-	let upData = {
-		string: data,
-		date: new Date
-	};
-	messageRef.child(pushKey).update(upData);
-};
+module.exports = {
+	uploadMessage : (data) => {
+		let pushKey = messageRef.push().key;
+		let upData = {
+			string: data,
+			date: new Date
+		};
+		messageRef.child(pushKey).update(upData);
+	},
 
-exports.uploadMotionData = (data) => {
-	let pushKey = motionDataRef.push().key;
-	motionDataRef.child(pushKey).update(data);
+	uploadMotionData : (data) => {
+		let pushKey = motionDataRef.push().key;
+		motionDataRef.child(pushKey).update(data);
+	}
 };
-
