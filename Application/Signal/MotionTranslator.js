@@ -14,7 +14,7 @@ class MotionTranslator {
 
 	newSignal(signal) {
 		this.prevSignal = this.currentSignal;
-		this.currentSignal = signal.date;
+		this.currentSignal = new Date(signal.date);
 		this.currentType = motionSignal[signal.signal];
 	}
 

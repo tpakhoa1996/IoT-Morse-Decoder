@@ -17,10 +17,11 @@ describe('Motion Translator', function() {
 			date: new Date(),
 		} 
 		
-		var signal = {
+		var endSignal = {
 			signal: "motionend",
-			date: startSignal.date.getMilliseconds() + morse.dot + 1
+			date: new Date(startSignal.date)
 		};
+		endSignal.date.setMilliseconds(endSignal.date.getMilliseconds() + morse.dot + 1);
 		var translator = new MotionTranslator();
 		translator.newSignal(startSignal);
 		translator.newSignal(endSignal);
@@ -36,10 +37,11 @@ describe('Motion Translator', function() {
             date: new Date(),
         }
 
-        var signal = {
-            signal: "motionend",
-            date: startSignal.date.getMilliseconds() + morse.dash + 1
-        };        
+		var endSignal = {
+			signal: "motionend",
+			date: new Date(startSignal.date)
+		};
+		endSignal.date.setMilliseconds(endSignal.date.getMilliseconds() + morse.dash + 1);
 
 		var translator = new MotionTranslator();
         translator.newSignal(startSignal);
@@ -55,12 +57,12 @@ describe('Motion Translator', function() {
 			signal: "motionend",
 			date: new Date()
 		}
-				
 		
-        var startSignal = {
-            signal: "motionstart",
-            date: endSignal.date.getMilliseconds() + morse.wordGap + 1,
-        };
+		var startSignal = {
+			signal: "motionstart",
+			date: new Date(endSignal.date)
+		};
+		startSignal.date.setMilliseconds(startSignal.date.getMilliseconds() + morse.wordGap + 1);
 
         var translator = new MotionTranslator();
         translator.newSignal(endSignal);
@@ -78,10 +80,11 @@ describe('Motion Translator', function() {
         }
            
 
-        var startSignal = {
-            signal: "motionstart",
-            date: endSignal.date.getMilliseconds() + morse.letterGap + 1,
-        };
+		var startSignal = {
+			signal: "motionstart",
+			date: new Date(endSignal.date)
+		};
+		startSignal.date.setMilliseconds(startSignal.date.getMilliseconds() + morse.letterGap + 1);
     
 		var translator = new MotionTranslator();
         translator.newSignal(endSignal);
