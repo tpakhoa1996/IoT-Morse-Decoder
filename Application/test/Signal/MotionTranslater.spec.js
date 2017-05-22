@@ -12,14 +12,18 @@ var morse = require("../../config.morse.js");
 
 describe('Motion Translator', function() {
 	it('Should be able to detect short signal', function() {
+		var startSignal = {
+			signal: "motionstart",
+			date: new Date(),
+		} 
+		
 		var signal = {
 			signal: "motionend",
-			date: new Date()
+			date: startSignal.date.getMilliseconds() + morse.dot + 1
 		};
 		var translator = new MotionTranslator();
-		translator.newSignal(signal);
-		signal.date.setMilliseconds(signal.date.getMilliseconds() + morse.dot + 1);
-		translator.newSignal(signal);
+		translator.newSignal(startSignal);
+		translator.newSignal(endSignal);
 		var result = translator.getMorseSignal();
 
     	expect(result).to.equal(morse.dotSym);
@@ -27,14 +31,19 @@ describe('Motion Translator', function() {
     });
 
 	it('Should be able to detect long signal', function() {
+		var startSignal = {
+            signal: "motionstart",
+            date: new Date(),
+        }
+
         var signal = {
             signal: "motionend",
-            date: new Date()
-        };
-        var translator = new MotionTranslator();
-        translator.newSignal(signal);
-        signal.date.setMilliseconds(signal.date.getMilliseconds() + morse.dash + 1);
-        translator.newSignal(signal);
+            date: startSignal.date.getMilliseconds() + morse.dash + 1
+        };        
+
+		var translator = new MotionTranslator();
+        translator.newSignal(startSignal);
+        translator.newSignal(endSignal);
         var result = translator.getMorseSignal();
 
         expect(result).to.equal(morse.dashSym);
