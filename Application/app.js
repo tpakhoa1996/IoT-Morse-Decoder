@@ -1,5 +1,8 @@
 /*
- * 
+ * This module is the entry of the application. It startts the server,
+ * resolves requests from clients and glues the Signal components 
+ * to Morse componens
+ * @author: Khoa (Brian) Tran - patra3@student.monash.edu
  */
 let Express = require("express"),
 	Http = require("http"),

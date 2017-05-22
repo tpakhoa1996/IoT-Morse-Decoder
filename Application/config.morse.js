@@ -1,3 +1,8 @@
+/*
+ * Define all configuration to the morse table
+ * @author: Khoa (Brian) Tran - patra3@student.monash.edu
+ * @author: Thanh Doan
+ */
 const timeUnit = 2000; // 1000 ms
 
 module.exports = {
