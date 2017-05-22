@@ -10,13 +10,13 @@ Transform motion signals into Morse Signals
 <br>
 Interprete Morse Signals to English message
 ## Instruction
-- Clone or download this git repository
+-Clone or download this git repository
 <br>
-- Install the dependencies packages of this project by typing: npm install
+-Install the dependencies packages of this project by typing: npm install
 <br>
-- Run application: npm start
+-Run application: npm start
 <br>
-- Run unit testing methods: npm test
+-Run unit testing methods: npm test
 #Contact
 Dac Thanh Doan: dtdoa5@student.monash.edu
 <br>
