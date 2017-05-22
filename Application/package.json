@@ -14,5 +14,9 @@
     "firebase-admin": "^4.2.1",
     "johnny-five": "^0.10.13",
     "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.4.1"
   }
 }
