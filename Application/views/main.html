@@ -31,6 +31,10 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+		<!-- MAIN.CSS -->
+		<link rel="stylesheet" href="/main.css">
+
+		<!-- MAIN.JS -->
 		<script src="/main.js"></script>
 		
 	</head>
@@ -41,29 +45,46 @@
 		</div>
 		<div class="container">
 
-			<div class="row">
+			<div class="text-center">
+				<button type="button" id="loading-btn" class="control-btn btn btn-default disabled" autocomoplete="off" disabled >
+					Tranmission process: undefined
+					<p class="control-text"> Waiting ... </p>
+				</button>
 
-				<div class="col-md-6">
-					<div class="panel panel-default">
-						<div class="panel-heading text-center">
-							<h4> Signal log </h4>
-						</div>
-						<div class="panel-body" id="signal">
-							<strong> No signal received </strong>
-						</div>
-					</div>
-				</div>
+				<button type="button" id="on-btn" class="control-btn btn btn-success" autocomoplete="off" >
+					Tranmission process: on
+					<p class="control-text"> Turn Off </p>
+				</button>
+
+				<button type="button" id="off-btn" class="control-btn btn btn-danger" autocomoplete="off" >
+					Tranmission process: off
+					<p class="control-text"> Turn On </p>
+				</button>
+			</div>
+
+			<div class="row">
 
 			 	<div class="col-md-6">
 					<div class="panel panel-default">
 						<div class="panel-heading text-center">
-							<h4> Decoded message </h4>
+							<h4> Decoded Message </h4>
 						</div>
-						<div class="panel-body" id="message">
+						<div class="panel-body m-content" id="message">
 							<strong> No messages decoded </strong>
 						</div>
 					</div>
 			 	</div>
+
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading text-center">
+							<h4> Signal Log </h4>
+						</div>
+						<div class="panel-body m-content" id="signal">
+							<strong> No signal received </strong>
+						</div>
+					</div>
+				</div>
 
 		  </div>
 

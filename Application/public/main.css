@@ -1,2 +1,19 @@
 .signal {
 }
+
+.control-btn {
+	margin-bottom: 20px;
+	font-size: 16px;
+}
+
+.control-text {
+	font-size: 18px;
+}
+
+#on-btn, #off-btn {
+	display: none;
+}
+
+.m-content {
+	font-size: 16px;
+}
