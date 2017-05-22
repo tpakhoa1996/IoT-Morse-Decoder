@@ -8,7 +8,7 @@ Receive motion signals from PIR Motion Sensor
 <br>
 Transform motion signals into Morse Signals
 <br>
-Interprete Morse Signals to English message
+Interpret Morse Signals to English message
 ## Instruction
 Clone or download this git repository
 <br>
