@@ -17,7 +17,7 @@ Install the dependencies packages of this project by typing: npm install
 Run application: npm start
 <br>
 Run unit testing methods: npm test
-#Contact
+## Contact
 Dac Thanh Doan: dtdoa5@student.monash.edu
 <br>
 Khoa Phan Anh Tran: patra3@student.monash.edu
