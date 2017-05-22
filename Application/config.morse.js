@@ -40,6 +40,27 @@ module.exports = {
 		"SLL": "W",
 		"LSSL": "X",
 		"LSLL": "Y",
-		"LLSS": "Z"
+		"LLSS": "Z",
+		"LLLLL": "0",
+		"SLLLL": "1",
+		"SSLLL": "2",
+		"SSSLL": "3",
+		"SSSSL": "4",
+		"SSSSS": "5",
+		"LSSSS": "6",
+		"LLSSS": "7",
+		"LLLSS": "8",
+		"LLLLS": "9",
+		".": "SLSLSL",
+		",": "LLSSLL",
+		":": "LLLSSS",
+		"?": "SSLLSS",
+		"'": "SLLLLS",
+		"-": "LSSSSL",
+		"/": "LSSLS",
+		"(": "LSLLSL",
+		"@": "SLLSLS",
+		"=": "LSSSL",
+		
 	}
 }
