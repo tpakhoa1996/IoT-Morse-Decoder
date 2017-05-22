@@ -32,7 +32,7 @@ logger.log("info", "Server is listening at port 8080");
 
 // Process data from motion sensor
 signalController.on("data", (morseData) => {
-	logger.log("info", ("A morse data is received: " + JSON.stringify(morseData)));
+	logger.log("info", ("A morse signal is received: " + JSON.stringify(morseData)));
 	morseController.addMorseSignal(morseData.signal);
 });
 

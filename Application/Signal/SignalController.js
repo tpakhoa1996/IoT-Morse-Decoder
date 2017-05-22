@@ -7,7 +7,7 @@ let board = new five.Board(),
 	signalEmitter = new Events(),
 	logger = new Winston.Logger(),
 	motionTranslator = new MotionTranslator(),
-	database = require.main.require("./Firebase/database.js");
+	Signal = require.main.require("./models/Signal.model.js");
 
 // Configure logger
 logger.configure({
@@ -33,47 +33,40 @@ logger.configure({
 let processNewSignal = (signal) => {
 	motionTranslator.newSignal(signal);
 	let morseSignal = motionTranslator.getMorseSignal();
-	if (morseSignal)
-		signalEmitter.emit("data", {"signal": morseSignal});
+	if (morseSignal) {
+		let signal = new Signal("morse", morseSignal, new Date());
+		signalEmitter.emit("data", signal.getObject());
+		signal.save();
+	}
 };
 
 board.on("ready", () => {
 	let motion = new five.Motion(7);
 
 	motion.on("calibrated", () => {
-		logger.log("info", "Sensor calibrated at", new Date().toLocaleString());
+		logger.log("info", "The sensor calibrated at", new Date().toLocaleString());
 
-		let signal = {
-			date: new Date(),
-			motion: "calibrated"
-		};
+		let signal = new Signal("motion", "calibrated", new Date());
+		signal.save();
 
-		database.uploadMotionData(signal);
 	});
 
 	motion.on("motionstart", () => {
-		logger.log("info", "A motion started at", new Date().toLocaleString());
+		logger.log("info", "Motion started at", new Date().toLocaleString());
 
-		let signal = {
-			date: new Date(),
-			motion: "motionstart"
-		};
+		let signal = new Signal("motion", "motionstart", new Date());
+		signal.save();
 
-		database.uploadMotionData(signal);
-
-		processNewSignal(signal);
+		processNewSignal(signal.getObject());
 	});
 
 	motion.on("motionend", () => {
-		logger.log("info", "A motion ended at", new Date().toLocaleString());
+		logger.log("info", "Motion ended at", new Date().toLocaleString());
 
-		let signal = {
-			date: new Date(),
-			motion: "motionend"
-		};
+		let signal = new Signal("motion", "motionend", new Date());
+		signal.save();
 
-		database.uploadMotionData(signal);
-		processNewSignal(signal);
+		processNewSignal(signal.getObject());
 	});
 });
 
