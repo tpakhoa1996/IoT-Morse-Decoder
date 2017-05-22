@@ -12,13 +12,13 @@ Interprete Morse Signals to English message
 ## Instruction
 Clone or download this git repository
 <br>
-Type the following commands if you wish to:
+- Type the following commands if you wish to:
 <br>
-1. Install the dependencies packages : npm install
+- Install the dependencies packages : npm install
 <br>
-2. Run application: npm start
+- Run application: npm start
 <br>
-3. Run unit testing methods: npm test
+- Run unit testing methods: npm test
 ## Contact
 Dac Thanh Doan: dtdoa5@student.monash.edu
 <br>
