@@ -3,7 +3,7 @@
 **
 *@author: Thanh Doan
 */
-let morse = require.main.require("./config.morse.js");
+let morse = require("../config.morse.js");
 
 class MorseDecoder {
 	constructor() {

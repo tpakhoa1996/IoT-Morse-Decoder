@@ -5,8 +5,8 @@
 *@author: Thanh Doan
 */
 
-let	Message = require.main.require("./models/Message.model.js"),
-	morse = require.main.require("./config.morse.js"),
+let	Message = require("../models/Message.model.js"),
+	morse = require("../config.morse.js"),
 	Winston = require("winston"),
 	MorseDecoder = require("./MorseDecoder");
 
