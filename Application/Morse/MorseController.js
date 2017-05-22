@@ -5,7 +5,7 @@
 *@author: Thanh Doan
 */
 
-let	database = require.main.require("./Firebase/database.js"),
+let	Message = require.main.require("./models/Message.model.js"),
 	morse = require.main.require("./config.morse.js"),
 	Winston = require("winston"),
 	MorseDecoder = require("./MorseDecoder");
@@ -26,7 +26,8 @@ exports.addMorseSignal = (morseSignal) => {
 
 	if (decodedString != null){
 		logger.log("info","A string has been decoded", decodedString);
-		database.uploadMessage(decodedString);	
+		let message = new Message(decodedString, new Date());
+		message.save();
 	}		
 	
 }
