@@ -1,6 +1,6 @@
 var chai = require('chai');
 var expect = chai.expect;
-var MorseDecoder = require("./Morse/MorseDecoder.js");
+var MorseDecoder = require("../../Morse/MorseDecoder.js");
 
 var decoder = new MorseDecoder();
 

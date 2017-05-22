@@ -7,7 +7,7 @@ let board = new five.Board(),
 	signalEmitter = new Events(),
 	logger = new Winston.Logger(),
 	motionTranslator = new MotionTranslator(),
-	Signal = require.main.require("./models/Signal.model.js");
+	Signal = require("../models/Signal.model.js");
 
 // Configure logger
 logger.configure({

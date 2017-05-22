@@ -1,4 +1,4 @@
-let morse = require.main.require("./config.morse.js");
+let morse = require("../config.morse.js");
 
 let motionSignal = {
 	motionstart: "gap",
