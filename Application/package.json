@@ -4,7 +4,7 @@
   "description": "a web application reading input from motion sensor and decode it accoding to morse code.",
   "main": "app.js",
   "scripts": {
-    "test": "mocha Test/**/*.spec.js",
+    "test": "mocha test/**/*.spec.js",
     "start": "nodemon app.js"
   },
   "author": "",
