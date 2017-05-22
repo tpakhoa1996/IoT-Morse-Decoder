@@ -14,11 +14,11 @@ Clone or download this git repository
 <br>
 Type the following commands if you wish to:
 <br>
-- Install the dependencies packages : npm install
+1. Install the dependencies packages : npm install
 <br>
-- Run application: npm start
+2. Run application: npm start
 <br>
-- Run unit testing methods: npm test
+3. Run unit testing methods: npm test
 ## Contact
 Dac Thanh Doan: dtdoa5@student.monash.edu
 <br>
